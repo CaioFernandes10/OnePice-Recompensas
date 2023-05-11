@@ -8,13 +8,15 @@ use App\Models\recompensas;
 
 class recompensaController extends Controller
 {
-    function index(Request $request){
+    function index(Request $request, $erro = ''){
 
-           
+            
+        
         //uma das formas de usar um filtro  
         //$dados = recompensas::where('nome','Like',"%{$request->search}%")->get();
         
         //segunda forma de fazer um filtro, tem mais possiblidades de tratar os dados enviados e podemos usar condicoes tbm
+        
         $pesquisa  = $request->search;
         $dados = recompensas::orderBy('recompensa','desc')->where(function ($query) use ($pesquisa) {
             if($pesquisa){
@@ -25,13 +27,15 @@ class recompensaController extends Controller
 
 
         })->get();
-        $deslogado = 0;
+       
         
-     return view('layouts.recompensa',compact('dados','deslogado'));
+     return view('layouts.recompensa',compact('dados','erro'));
     }
      function deletar($id){
        recompensas::find($id)->delete();
-       return redirect()->route('paginas.recompensa');
+       $erro = 1;
+      
+       return redirect()->route('paginas.recompensa',['erro'=>$erro]);
     }
     function show($id){
        
@@ -40,4 +44,17 @@ class recompensaController extends Controller
 
         return view('layouts.detalhes',['detalhes'=>$detalhes]);
      }
+     function editar($id){
+       
+       $dados = recompensas::find($id);
+     
+       return view('layouts.edit',['dados'=>$dados]);
+     }
+     function update($id, Request $request){
+        
+        $dados = recompensas::find($id);
+        $dados->update($request->all());
+        $erro = 2;
+        return redirect()->route('paginas.recompensa',['erro'=>$erro]);
+      }
 }

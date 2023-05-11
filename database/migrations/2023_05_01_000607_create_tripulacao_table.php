@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-          
-        Schema::table('usuarios', function (Blueprint $table) {
-           
-            $table->tinyInteger('nivel')->unsigned()->nullable(false)
-            ->default(1)
-            ->checkIn([1, 2]);
-            
+        Schema::create('tripulacaos', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('cargo');
+            $table->bigInteger('recompesas_id')->references('id')->on('recompensas');
         });
     }
 
@@ -30,8 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('usuarios', function (Blueprint $table) {
-            $table->dropColumn('nivel');
-        });
+        Schema::dropIfExists('tripulacao');
     }
 };

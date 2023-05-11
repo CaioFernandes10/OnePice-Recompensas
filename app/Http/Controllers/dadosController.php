@@ -11,7 +11,7 @@ class dadosController extends Controller
 {
    function index(Request $request)
    {
-
+      
       $request->validate(
          [
 
@@ -33,9 +33,9 @@ class dadosController extends Controller
       $extension = $request->imagem->getClientOriginalExtension();
 
       $data['imagem'] = $request->imagem->storeAs('/img', now() . ".{$extension}");
-
+      $erro = 3;
       recompensas::create($data);
       
-      return redirect()->route('paginas.recompensa');
+      return redirect()->route('paginas.recompensa',['erro'=>$erro]);
    }
 }

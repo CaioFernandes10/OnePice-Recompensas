@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class recompensas extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome','apelido','recompensa','descricao','imagem'];
+    protected $fillable = ['nome','apelido','recompensa','descricao','imagem','status','cargo'];
+    public function recompensas(){
+        return $this->belongsTo(recompensas::class);
+    }
 }

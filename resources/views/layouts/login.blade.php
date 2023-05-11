@@ -39,40 +39,45 @@
     
         <div class="teste" >
 
-            <div class="d-flex justify-content-center">
-                @if($erro>=1)
-                <div class="alert alert-danger" role="alert">
-                    {{$erro}}
-                </div>  
-                @else
-              
-                @endif
-            </div>
+                <div class="d-flex justify-content-center">
+                    @if($erro>=1)
+                    <div class="alert alert-primary" role="alert">
+                        {{($erro)}}
+                    </div>  
+                    @else
+                
+                    @endif
+                </div>
 
 
-        <form action="{{ route('paginas.auth') }}" method="POST"
-            style='width: 30%;margin-left:auto; margin-right:auto;'
-            class="border border-dark rounded-4 bg-info p-3 fundo">
-            <div>
-                <img src="{{ asset('img/one.svg') }}" class="rounded mx-auto d-block" width="200px" height="200px">
-            </div>
-            @csrf
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label" style="color:rgb(0, 0, 0);font-size:25px">Digite seu
-                    E-Mail</label>
-                <input type="email" class="form-control  border-dark" id="email" name="email"aria-describedby="emailHelp">
+            <form action="{{ route('paginas.auth') }}" method="POST"
+                style='width: 30%;margin-left:auto; margin-right:auto;'
+                class="border border-dark rounded-4 bg-info p-3 fundo">
+                <div>
+                    <img src="{{ asset('img/one.svg') }}" class="rounded mx-auto d-block" width="200px" height="200px">
+                </div>
+                @csrf
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" style="color:rgb(0, 0, 0);font-size:25px">Digite seu
+                        E-Mail</label>
+                    <input type="email" class="form-control  border-dark" id="email" name="email"aria-describedby="emailHelp">
 
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label" style="color:rgb(0, 0, 0);font-size:25px">Digite sua
-                    Senha</label>
-                <input type="password" class="form-control  border-dark" id="senha" name="senha">
-            </div>
-            <div class="d-grid gap-2">
-            <button type="submit" class="btn btn-primary">Entrar</button>
-            </div>
-        </form>
-        
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" style="color:rgb(0, 0, 0);font-size:25px">Digite sua
+                        Senha</label>
+                    <input type="password" class="form-control  border-dark" id="senha" name="senha">
+                </div>
+                <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+
+            
+                <div style="display:flex">
+                    <p>Nao tem cadastro ?</p> <a href="{{route('paginas.cadastro')}}">  Crie uma conta aqui</a>
+                  </div>
+            </form>
+           
     </div>
 
     </div>

@@ -11,7 +11,10 @@
 
     <title>Marinha</title>
 <style>
-
+*{
+            font-family: 'Instrument Serif', serif;
+            font-family: 'Sigmar', cursive;
+}
 </style>
   </head>
 

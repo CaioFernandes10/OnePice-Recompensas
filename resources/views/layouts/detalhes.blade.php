@@ -46,6 +46,15 @@
             font-size: 24px;
             z-index: 1;
         }
+        .status{
+            position: absolute;
+            top: 63%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            z-index: 1;
+        }
         p{
             white-space: nowrap;
         }
@@ -72,7 +81,23 @@
                     <p style="font-size: 40px; font-family:sigmar;color:#5e362c">{{ $detalhes->nome}}</p>
                 </td>
             </div>
+            @if ($detalhes->status == 'morto')
+            <div class="status">
+                <td> 
+                    <img src="{{ asset('img/excluir.png') }}" width="500" height="500" >
+                </td>
+            </div>
+            @elseif ($detalhes->status == 'preso')
+            <div class="status">
+                <td> 
+                    <img src="{{ asset('img/prisao.png') }}" width="550" height="620" >
+                </td>
+            </div> 
 
+            @else
+                
+            @endif
+           
 
 
         </div>

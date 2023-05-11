@@ -17,6 +17,10 @@ class UsuariosController extends Controller
          $erro = "Necessario fazer login para ter acesso a pagina";
             
         }
+        if($erro == 3){
+            $erro = "cadastro realizado com sucesso";
+               
+           }
         return view('layouts.login',['erro'=>$erro]);
     }
     function autenticacao(Request $request){
@@ -44,8 +48,16 @@ class UsuariosController extends Controller
         session_destroy();
         return redirect()->route('paginas.login');
     }
-    function show($id){
-        dd($id);
+    function cadastro(){
+        
+        return view('layouts.registro');
         
     } 
+    function cadastroconta(Request $request){
+        
+        Usuario::create($request->all());
+        
+        return redirect()->route('paginas.login',['erro'=>3]);
+
+    }
 }
